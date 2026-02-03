@@ -35,7 +35,7 @@ def count_tokens(text, model=None):
 def ChatGPT_API_with_finish_reason(
     model, prompt, api_key=CHATGPT_API_KEY, chat_history=None
 ):
-    max_retries = 10
+    max_retries = 2
     client = openai.OpenAI(api_key=api_key, base_url=OPENAI_BASE_URL)
     for i in range(max_retries):
         try:
@@ -55,6 +55,8 @@ def ChatGPT_API_with_finish_reason(
             else:
                 return response.choices[0].message.content, "finished"
 
+        except KeyboardInterrupt:
+            raise
         except Exception as e:
             print("************* Retrying *************")
             logging.error(f"Error: {e}")
@@ -66,7 +68,7 @@ def ChatGPT_API_with_finish_reason(
 
 
 def ChatGPT_API(model, prompt, api_key=CHATGPT_API_KEY, chat_history=None):
-    max_retries = 10
+    max_retries = 2
     client = openai.OpenAI(api_key=api_key, base_url=OPENAI_BASE_URL)
     for i in range(max_retries):
         try:
@@ -83,6 +85,8 @@ def ChatGPT_API(model, prompt, api_key=CHATGPT_API_KEY, chat_history=None):
             )
 
             return response.choices[0].message.content
+        except KeyboardInterrupt:
+            raise
         except Exception as e:
             print("************* Retrying *************")
             logging.error(f"Error: {e}")
@@ -94,7 +98,7 @@ def ChatGPT_API(model, prompt, api_key=CHATGPT_API_KEY, chat_history=None):
 
 
 async def ChatGPT_API_async(model, prompt, api_key=CHATGPT_API_KEY):
-    max_retries = 10
+    max_retries = 2
     messages = [{"role": "user", "content": prompt}]
     for i in range(max_retries):
         try:
@@ -107,6 +111,8 @@ async def ChatGPT_API_async(model, prompt, api_key=CHATGPT_API_KEY):
                     temperature=0,
                 )
                 return response.choices[0].message.content
+        except KeyboardInterrupt:
+            raise
         except Exception as e:
             print("************* Retrying *************")
             logging.error(f"Error: {e}")
