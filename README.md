@@ -178,6 +178,22 @@ You can customize the processing with additional optional arguments:
 </details>
 
 <details>
+<summary><strong>Q&A from index (CLI)</strong></summary>
+<br>
+After generating the index, you can ask questions using the CLI:
+
+```bash
+python3 ask_pageindex.py --index_path results/your_document_structure.json --question "Your question"
+```
+
+Optional environment variables in `.env`:
+```
+PAGEINDEX_QA_TOP_K=3
+PAGEINDEX_QA_USE_SUMMARY=yes
+```
+</details>
+
+<details>
 <summary><strong>Markdown support</strong></summary>
 <br>
 We also provide markdown support for PageIndex. You can use the `-md_path` flag to generate a tree structure for a markdown file.
