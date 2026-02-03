@@ -1,6 +1,10 @@
+![](https://github.com/user-attachments/assets/46201e72-675b-43bc-bfbd-081cc6b65a1d)
+
 # PageIndex (Versi Modifikasi)
 
 Repositori ini adalah versi modifikasi dari PageIndex untuk membuat struktur (index) dokumen panjang (PDF/Markdown) dan memungkinkan tanya‑jawab berbasis hasil index.
+
+Dan menambahkan Rest API untuk mempermudah development.
 
 Referensi sumber GitHub asli:
 - https://github.com/VectifyAI/PageIndex
