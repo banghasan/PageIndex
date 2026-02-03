@@ -125,6 +125,16 @@ class AskResponse(BaseModel):
 app = FastAPI(title="PageIndex API")
 
 
+@app.on_event("startup")
+def show_runtime_config():
+    config_loader = ConfigLoader()
+    opt = config_loader.load()
+    base_url = os.getenv("OPENAI_BASE_URL") or ""
+    print("=== Konfigurasi API ===")
+    print(f"OPENAI_BASE_URL: {base_url}")
+    print(f"MODEL: {opt.model}")
+
+
 @app.post("/index", response_model=IndexResponse)
 def create_index(payload: IndexRequest):
     if bool(payload.pdf_path) == bool(payload.md_path):
